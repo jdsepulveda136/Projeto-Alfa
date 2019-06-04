@@ -59,12 +59,37 @@ namespace ProjCLR {
 	private: System::Windows::Forms::ToolStripMenuItem^ mostrarColunaDelegadoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ esconderColunaDelegadoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ sortearDelegadoToolStripMenuItem;
+
+
+
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^ reiniciarDatagridToolStripMenuItem;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nome;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Freguesia;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nascimento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Sexo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Delegado;
-	private: System::Windows::Forms::ToolStripMenuItem^ reiniciarDatagridToolStripMenuItem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,11 +119,6 @@ namespace ProjCLR {
 		void InitializeComponent(void)
 		{
 			this->data_infos = (gcnew System::Windows::Forms::DataGridView());
-			this->Nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Freguesia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Nascimento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Delegado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->bt_limpa = (gcnew System::Windows::Forms::Button());
 			this->bt_localiza = (gcnew System::Windows::Forms::Button());
 			this->txt_localiza = (gcnew System::Windows::Forms::TextBox());
@@ -115,6 +135,11 @@ namespace ProjCLR {
 			this->mostrarColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->esconderColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->Nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Freguesia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Nascimento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Delegado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -123,46 +148,21 @@ namespace ProjCLR {
 			// 
 			this->data_infos->AllowUserToAddRows = false;
 			this->data_infos->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left));
+			this->data_infos->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
 			this->data_infos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->data_infos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Nome, this->Freguesia,
 					this->Nascimento, this->Sexo, this->Delegado
 			});
-			this->data_infos->Location = System::Drawing::Point(12, 136);
+			this->data_infos->Location = System::Drawing::Point(12, 137);
 			this->data_infos->Name = L"data_infos";
-			this->data_infos->Size = System::Drawing::Size(693, 423);
+			this->data_infos->Size = System::Drawing::Size(534, 423);
 			this->data_infos->TabIndex = 0;
-			// 
-			// Nome
-			// 
-			this->Nome->HeaderText = L"Nome";
-			this->Nome->Name = L"Nome";
-			// 
-			// Freguesia
-			// 
-			this->Freguesia->HeaderText = L"Freguesia";
-			this->Freguesia->Name = L"Freguesia";
-			// 
-			// Nascimento
-			// 
-			this->Nascimento->HeaderText = L"Nascimento";
-			this->Nascimento->Name = L"Nascimento";
-			// 
-			// Sexo
-			// 
-			this->Sexo->HeaderText = L"Sexo";
-			this->Sexo->Name = L"Sexo";
-			// 
-			// Delegado
-			// 
-			this->Delegado->HeaderText = L"Delegado";
-			this->Delegado->Name = L"Delegado";
-			this->Delegado->Visible = false;
 			// 
 			// bt_limpa
 			// 
 			this->bt_limpa->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_limpa->Location = System::Drawing::Point(12, 27);
+			this->bt_limpa->Location = System::Drawing::Point(50, 27);
 			this->bt_limpa->Name = L"bt_limpa";
 			this->bt_limpa->Size = System::Drawing::Size(218, 23);
 			this->bt_limpa->TabIndex = 1;
@@ -173,7 +173,7 @@ namespace ProjCLR {
 			// bt_localiza
 			// 
 			this->bt_localiza->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_localiza->Location = System::Drawing::Point(12, 56);
+			this->bt_localiza->Location = System::Drawing::Point(50, 56);
 			this->bt_localiza->Name = L"bt_localiza";
 			this->bt_localiza->Size = System::Drawing::Size(218, 23);
 			this->bt_localiza->TabIndex = 2;
@@ -184,7 +184,7 @@ namespace ProjCLR {
 			// txt_localiza
 			// 
 			this->txt_localiza->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->txt_localiza->Location = System::Drawing::Point(13, 85);
+			this->txt_localiza->Location = System::Drawing::Point(51, 85);
 			this->txt_localiza->Name = L"txt_localiza";
 			this->txt_localiza->Size = System::Drawing::Size(217, 20);
 			this->txt_localiza->TabIndex = 3;
@@ -192,16 +192,17 @@ namespace ProjCLR {
 			// txt_result
 			// 
 			this->txt_result->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->txt_result->Location = System::Drawing::Point(460, 29);
+			this->txt_result->Location = System::Drawing::Point(552, 137);
 			this->txt_result->Multiline = true;
 			this->txt_result->Name = L"txt_result";
-			this->txt_result->Size = System::Drawing::Size(245, 78);
+			this->txt_result->Size = System::Drawing::Size(225, 423);
 			this->txt_result->TabIndex = 4;
+			this->txt_result->TextChanged += gcnew System::EventHandler(this, &Form1::Txt_result_TextChanged);
 			// 
 			// bt_velhos
 			// 
 			this->bt_velhos->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_velhos->Location = System::Drawing::Point(236, 27);
+			this->bt_velhos->Location = System::Drawing::Point(274, 27);
 			this->bt_velhos->Name = L"bt_velhos";
 			this->bt_velhos->Size = System::Drawing::Size(218, 23);
 			this->bt_velhos->TabIndex = 5;
@@ -212,7 +213,7 @@ namespace ProjCLR {
 			// bt_freguesia
 			// 
 			this->bt_freguesia->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_freguesia->Location = System::Drawing::Point(236, 56);
+			this->bt_freguesia->Location = System::Drawing::Point(274, 56);
 			this->bt_freguesia->Name = L"bt_freguesia";
 			this->bt_freguesia->Size = System::Drawing::Size(218, 23);
 			this->bt_freguesia->TabIndex = 6;
@@ -223,7 +224,7 @@ namespace ProjCLR {
 			// txt_freguesia
 			// 
 			this->txt_freguesia->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->txt_freguesia->Location = System::Drawing::Point(236, 85);
+			this->txt_freguesia->Location = System::Drawing::Point(274, 85);
 			this->txt_freguesia->Name = L"txt_freguesia";
 			this->txt_freguesia->Size = System::Drawing::Size(218, 20);
 			this->txt_freguesia->TabIndex = 7;
@@ -236,7 +237,7 @@ namespace ProjCLR {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(713, 24);
+			this->menuStrip1->Size = System::Drawing::Size(789, 24);
 			this->menuStrip1->TabIndex = 8;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -302,12 +303,47 @@ namespace ProjCLR {
 			this->sortearDelegadoToolStripMenuItem->Text = L"Sortear delegado";
 			this->sortearDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::SortearDelegadoToolStripMenuItem_Click);
 			// 
+			// Nome
+			// 
+			this->Nome->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->Nome->FillWeight = 80;
+			this->Nome->HeaderText = L"Nome";
+			this->Nome->Name = L"Nome";
+			// 
+			// Freguesia
+			// 
+			this->Freguesia->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->Freguesia->FillWeight = 50;
+			this->Freguesia->HeaderText = L"Freguesia";
+			this->Freguesia->Name = L"Freguesia";
+			// 
+			// Nascimento
+			// 
+			this->Nascimento->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->Nascimento->FillWeight = 50;
+			this->Nascimento->HeaderText = L"Nascimento";
+			this->Nascimento->Name = L"Nascimento";
+			// 
+			// Sexo
+			// 
+			this->Sexo->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->Sexo->FillWeight = 15;
+			this->Sexo->HeaderText = L"Sexo";
+			this->Sexo->Name = L"Sexo";
+			// 
+			// Delegado
+			// 
+			this->Delegado->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->Delegado->FillWeight = 25;
+			this->Delegado->HeaderText = L"Delegado";
+			this->Delegado->Name = L"Delegado";
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->ClientSize = System::Drawing::Size(713, 572);
+			this->ClientSize = System::Drawing::Size(789, 572);
 			this->Controls->Add(this->txt_freguesia);
 			this->Controls->Add(this->bt_freguesia);
 			this->Controls->Add(this->bt_velhos);
@@ -441,7 +477,6 @@ private: System::Void EsconderLinhaParaAdicionarToolStripMenuItem_Click(System::
 	{
 	data_infos->AllowUserToAddRows = false;
 	}
-
 private: System::Void MostrarColunaDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	mosta_delegado();	
@@ -473,5 +508,7 @@ private: System::Void ReiniciarDatagridToolStripMenuItem_Click(System::Object^ s
 	}
 
 
+private: System::Void Txt_result_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
