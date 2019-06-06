@@ -36,33 +36,23 @@ namespace ProjCLR {
 		}
 	private: System::Windows::Forms::DataGridView^ data_infos;
 
-
-
-
 	private: System::Windows::Forms::Button^ bt_limpa;
 	private: System::Windows::Forms::Button^ bt_localiza;
 	private: System::Windows::Forms::TextBox^ txt_localiza;
 	private: System::Windows::Forms::TextBox^ txt_result;
 	private: System::Windows::Forms::Button^ bt_velhos;
 	private: System::Windows::Forms::Button^ bt_freguesia;
-	private: System::Windows::Forms::TextBox^ txt_freguesia;
+
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^ verLinhaParaAdicionarToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ esconderLinhaParaAdicionarToolStripMenuItem;
-
-
 
 
 
 	private: System::Windows::Forms::ToolStripMenuItem^ delegadoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mostrarColunaDelegadoToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ esconderColunaDelegadoToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ sortearDelegadoToolStripMenuItem;
-
-
-
-
 
 	private: System::Windows::Forms::ToolStripMenuItem^ reiniciarDatagridToolStripMenuItem;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nome;
@@ -70,35 +60,6 @@ namespace ProjCLR {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nascimento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Sexo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Delegado;
-	private: System::Windows::Forms::ToolStripMenuItem^ eliminarSelecionadosToolStripMenuItem;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -131,16 +92,12 @@ namespace ProjCLR {
 			this->txt_result = (gcnew System::Windows::Forms::TextBox());
 			this->bt_velhos = (gcnew System::Windows::Forms::Button());
 			this->bt_freguesia = (gcnew System::Windows::Forms::Button());
-			this->txt_freguesia = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verLinhaParaAdicionarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->esconderLinhaParaAdicionarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reiniciarDatagridToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->eliminarSelecionadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->delegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostrarColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->esconderColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -148,7 +105,6 @@ namespace ProjCLR {
 			// 
 			// data_infos
 			// 
-			this->data_infos->AllowUserToAddRows = false;
 			this->data_infos->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left));
 			this->data_infos->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
 			this->data_infos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -199,7 +155,7 @@ namespace ProjCLR {
 			// bt_limpa
 			// 
 			this->bt_limpa->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_limpa->Location = System::Drawing::Point(50, 27);
+			this->bt_limpa->Location = System::Drawing::Point(12, 27);
 			this->bt_limpa->Name = L"bt_limpa";
 			this->bt_limpa->Size = System::Drawing::Size(218, 23);
 			this->bt_limpa->TabIndex = 1;
@@ -210,7 +166,7 @@ namespace ProjCLR {
 			// bt_localiza
 			// 
 			this->bt_localiza->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_localiza->Location = System::Drawing::Point(50, 56);
+			this->bt_localiza->Location = System::Drawing::Point(12, 56);
 			this->bt_localiza->Name = L"bt_localiza";
 			this->bt_localiza->Size = System::Drawing::Size(218, 23);
 			this->bt_localiza->TabIndex = 2;
@@ -221,7 +177,7 @@ namespace ProjCLR {
 			// txt_localiza
 			// 
 			this->txt_localiza->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->txt_localiza->Location = System::Drawing::Point(51, 85);
+			this->txt_localiza->Location = System::Drawing::Point(13, 85);
 			this->txt_localiza->Name = L"txt_localiza";
 			this->txt_localiza->Size = System::Drawing::Size(217, 20);
 			this->txt_localiza->TabIndex = 3;
@@ -239,7 +195,7 @@ namespace ProjCLR {
 			// bt_velhos
 			// 
 			this->bt_velhos->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_velhos->Location = System::Drawing::Point(274, 27);
+			this->bt_velhos->Location = System::Drawing::Point(236, 27);
 			this->bt_velhos->Name = L"bt_velhos";
 			this->bt_velhos->Size = System::Drawing::Size(218, 23);
 			this->bt_velhos->TabIndex = 5;
@@ -250,21 +206,13 @@ namespace ProjCLR {
 			// bt_freguesia
 			// 
 			this->bt_freguesia->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->bt_freguesia->Location = System::Drawing::Point(274, 56);
+			this->bt_freguesia->Location = System::Drawing::Point(236, 56);
 			this->bt_freguesia->Name = L"bt_freguesia";
 			this->bt_freguesia->Size = System::Drawing::Size(218, 23);
 			this->bt_freguesia->TabIndex = 6;
 			this->bt_freguesia->Text = L"Quantos há desta freguesia";
 			this->bt_freguesia->UseVisualStyleBackColor = true;
 			this->bt_freguesia->Click += gcnew System::EventHandler(this, &Form1::Bt_freguesia_Click);
-			// 
-			// txt_freguesia
-			// 
-			this->txt_freguesia->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->txt_freguesia->Location = System::Drawing::Point(274, 85);
-			this->txt_freguesia->Name = L"txt_freguesia";
-			this->txt_freguesia->Size = System::Drawing::Size(218, 20);
-			this->txt_freguesia->TabIndex = 7;
 			// 
 			// menuStrip1
 			// 
@@ -280,9 +228,9 @@ namespace ProjCLR {
 			// 
 			// toolStripMenuItem1
 			// 
-			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->verLinhaParaAdicionarToolStripMenuItem,
-					this->esconderLinhaParaAdicionarToolStripMenuItem, this->reiniciarDatagridToolStripMenuItem, this->eliminarSelecionadosToolStripMenuItem
+					this->reiniciarDatagridToolStripMenuItem
 			});
 			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
 			this->toolStripMenuItem1->Size = System::Drawing::Size(64, 20);
@@ -291,36 +239,22 @@ namespace ProjCLR {
 			// verLinhaParaAdicionarToolStripMenuItem
 			// 
 			this->verLinhaParaAdicionarToolStripMenuItem->Name = L"verLinhaParaAdicionarToolStripMenuItem";
-			this->verLinhaParaAdicionarToolStripMenuItem->Size = System::Drawing::Size(229, 22);
-			this->verLinhaParaAdicionarToolStripMenuItem->Text = L"Ver linha para adicionar";
+			this->verLinhaParaAdicionarToolStripMenuItem->Size = System::Drawing::Size(300, 22);
+			this->verLinhaParaAdicionarToolStripMenuItem->Text = L"Esconder linha para adicionar e cabeçalhos";
 			this->verLinhaParaAdicionarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::VerLinhaParaAdicionarToolStripMenuItem_Click);
-			// 
-			// esconderLinhaParaAdicionarToolStripMenuItem
-			// 
-			this->esconderLinhaParaAdicionarToolStripMenuItem->Name = L"esconderLinhaParaAdicionarToolStripMenuItem";
-			this->esconderLinhaParaAdicionarToolStripMenuItem->Size = System::Drawing::Size(229, 22);
-			this->esconderLinhaParaAdicionarToolStripMenuItem->Text = L"Esconder linha para adicionar";
-			this->esconderLinhaParaAdicionarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::EsconderLinhaParaAdicionarToolStripMenuItem_Click);
 			// 
 			// reiniciarDatagridToolStripMenuItem
 			// 
 			this->reiniciarDatagridToolStripMenuItem->Name = L"reiniciarDatagridToolStripMenuItem";
-			this->reiniciarDatagridToolStripMenuItem->Size = System::Drawing::Size(229, 22);
+			this->reiniciarDatagridToolStripMenuItem->Size = System::Drawing::Size(300, 22);
 			this->reiniciarDatagridToolStripMenuItem->Text = L"Reiniciar Datagrid";
 			this->reiniciarDatagridToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ReiniciarDatagridToolStripMenuItem_Click);
 			// 
-			// eliminarSelecionadosToolStripMenuItem
-			// 
-			this->eliminarSelecionadosToolStripMenuItem->Name = L"eliminarSelecionadosToolStripMenuItem";
-			this->eliminarSelecionadosToolStripMenuItem->Size = System::Drawing::Size(229, 22);
-			this->eliminarSelecionadosToolStripMenuItem->Text = L"Eliminar selecionados";
-			this->eliminarSelecionadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::EliminarSelecionadosToolStripMenuItem_Click);
-			// 
 			// delegadoToolStripMenuItem
 			// 
-			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->mostrarColunaDelegadoToolStripMenuItem,
-					this->esconderColunaDelegadoToolStripMenuItem, this->sortearDelegadoToolStripMenuItem
+					this->sortearDelegadoToolStripMenuItem
 			});
 			this->delegadoToolStripMenuItem->Name = L"delegadoToolStripMenuItem";
 			this->delegadoToolStripMenuItem->Size = System::Drawing::Size(69, 20);
@@ -329,21 +263,14 @@ namespace ProjCLR {
 			// mostrarColunaDelegadoToolStripMenuItem
 			// 
 			this->mostrarColunaDelegadoToolStripMenuItem->Name = L"mostrarColunaDelegadoToolStripMenuItem";
-			this->mostrarColunaDelegadoToolStripMenuItem->Size = System::Drawing::Size(213, 22);
-			this->mostrarColunaDelegadoToolStripMenuItem->Text = L"Mostrar coluna delegado";
+			this->mostrarColunaDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
+			this->mostrarColunaDelegadoToolStripMenuItem->Text = L"Mostrar coluna do delegado";
 			this->mostrarColunaDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostrarColunaDelegadoToolStripMenuItem_Click);
-			// 
-			// esconderColunaDelegadoToolStripMenuItem
-			// 
-			this->esconderColunaDelegadoToolStripMenuItem->Name = L"esconderColunaDelegadoToolStripMenuItem";
-			this->esconderColunaDelegadoToolStripMenuItem->Size = System::Drawing::Size(213, 22);
-			this->esconderColunaDelegadoToolStripMenuItem->Text = L"Esconder coluna delegado";
-			this->esconderColunaDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::EsconderColunaDelegadoToolStripMenuItem_Click);
 			// 
 			// sortearDelegadoToolStripMenuItem
 			// 
 			this->sortearDelegadoToolStripMenuItem->Name = L"sortearDelegadoToolStripMenuItem";
-			this->sortearDelegadoToolStripMenuItem->Size = System::Drawing::Size(213, 22);
+			this->sortearDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
 			this->sortearDelegadoToolStripMenuItem->Text = L"Sortear delegado";
 			this->sortearDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::SortearDelegadoToolStripMenuItem_Click);
 			// 
@@ -353,7 +280,6 @@ namespace ProjCLR {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(789, 572);
-			this->Controls->Add(this->txt_freguesia);
 			this->Controls->Add(this->bt_freguesia);
 			this->Controls->Add(this->bt_velhos);
 			this->Controls->Add(this->txt_result);
@@ -375,14 +301,16 @@ namespace ProjCLR {
 		}
 #pragma endregion
 
-	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) 
+private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) 
 		{
 		inicializa();
 		}
 
-	//Função com a inicialização dos dados da datagridview
+//Função com a inicialização dos dados da datagridview
 private: void inicializa()
 		{
+		data_infos->Rows->Clear();
+
 		data_infos->Rows->Add("Ana Rita Cunha", "Maximinos", 1998, "F");
 		data_infos->Rows->Add("Bela Costa Silva", "Lomar", 2002, "F");
 		data_infos->Rows->Add("Carlos Alberto Costa", "Sequeira", 1999, "M");
@@ -402,20 +330,50 @@ private: void inicializa()
 		data_infos->Rows->Add("Otávio Ferreira", "Maximinos", 1999, "M");
 		data_infos->Rows->Add("Silvério Silva Teixeira", "Lamaçães", 2001, "M");
 		data_infos->Rows->Add("Teodoro Armando Matos", "Maximinos", 2002, "M");
-		data_infos->Rows->Add("Zacarias Alexandre Sampaio", "Ferreiros", 1998, "M");
+		data_infos->Rows->Add("Zacarias Alexandre Sampaio", "Ferreiros", 1996, "M");
 		}
 
-private: void mosta_delegado()
+//Função mostrar/esconder linha e cabeçalhos
+private: void mostra_adicionar()
+	{
+	if (data_infos->RowHeadersVisible)
+	{
+		try
+		{
+			data_infos->RowHeadersVisible = false;
+			data_infos->AllowUserToAddRows = false;
+			verLinhaParaAdicionarToolStripMenuItem->Text = "Mostrar linha adicionar e cabeçalho";
+		}
+		catch (...){}
+		
+	}
+	else
+	{
+		try
+		{
+			data_infos->RowHeadersVisible = true;
+			data_infos->AllowUserToAddRows = true;
+			verLinhaParaAdicionarToolStripMenuItem->Text = "Esconder linha adicionar e cabeçalho";
+		}
+		catch (...){}
+		}
+
+	}
+
+private: void mostra_delegado()
 	{
 		if (data_infos->Columns["Delegado"]->Visible == false)
 		{
 			//data_infos->Width = data_infos->Width + 100;
 			data_infos->Columns["Delegado"]->Visible = true;
+			mostrarColunaDelegadoToolStripMenuItem->Text = "Esconder coluna do delegado";
 		}
 		else
 		{
 			//data_infos->Width = data_infos->Width - 100;
 			data_infos->Columns["Delegado"]->Visible = false;
+			mostrarColunaDelegadoToolStripMenuItem->Text = "Mostrar coluna do delegado";
+
 		}
 	}
 
@@ -441,10 +399,12 @@ private: System::Void Bt_localiza_Click(System::Object^ sender, System::EventArg
 
 	}
 
+//Encontra o mais velho ou os mais velhos 
 private: System::Void Bt_velhos_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	int index = data_infos->Rows->Count - 1;
 	int data_velho = Convert::ToInt16(data_infos->Rows[0]->Cells[2]->Value);
+	String^ resultado = "Mais velho(s):\r\n";
 	
 	for (size_t i =1; i < index; i++)
 	{
@@ -458,9 +418,10 @@ private: System::Void Bt_velhos_Click(System::Object^ sender, System::EventArgs^
 	{
 		if (Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value) == data_velho)
 		{
-			txt_result->Text = Convert::ToString(data_infos->Rows[i]->Cells[0]->Value) + ", " + Convert::ToString(data_infos->Rows[i]->Cells[2]->Value);
+			resultado = resultado + Convert::ToString(data_infos->Rows[i]->Cells[0]->Value) + ", " + Convert::ToString(data_infos->Rows[i]->Cells[2]->Value) + "\r\n";
 		}
 	}
+	txt_result->Text = resultado;
 	}
 
 private: System::Void Bt_freguesia_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -470,7 +431,7 @@ private: System::Void Bt_freguesia_Click(System::Object^ sender, System::EventAr
 	String^ nomes = "Sexo masculino: \r\n\r\n";
 	for (size_t i = 0; i < index; i++)
 	{
-		if (data_infos->Rows[i]->Cells[1]->Value->ToString()->ToUpper() == txt_freguesia->Text->ToUpper() && data_infos->Rows[i]->Cells[3]->Value->ToString()->ToUpper()== "M")
+		if (data_infos->Rows[i]->Cells[1]->Value->ToString()->ToUpper() == txt_localiza->Text->ToUpper() && data_infos->Rows[i]->Cells[3]->Value->ToString()->ToUpper()== "M")
 		{
 			nomes = nomes + Convert::ToString(data_infos->Rows[i]->Cells[0]->Value->ToString()) +  "\r\n";
 			cont_freg++;
@@ -483,22 +444,12 @@ private: System::Void Bt_freguesia_Click(System::Object^ sender, System::EventAr
 
 private: System::Void VerLinhaParaAdicionarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-	data_infos->AllowUserToAddRows = true;
-	}
-
-private: System::Void EsconderLinhaParaAdicionarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-	data_infos->AllowUserToAddRows = false;
+	mostra_adicionar();
 	}
 
 private: System::Void MostrarColunaDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-	mosta_delegado();	
-	}
-
-private: System::Void EsconderColunaDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-	mosta_delegado();
+	mostra_delegado();	
 	}
 
 private: System::Void SortearDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -524,10 +475,7 @@ private: System::Void ReiniciarDatagridToolStripMenuItem_Click(System::Object^ s
 
 private: System::Void Txt_result_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void EliminarSelecionadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
 
-	}
 
 };
 }
