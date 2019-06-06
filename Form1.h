@@ -62,6 +62,7 @@ namespace ProjCLR {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Delegado;
 	private: System::Windows::Forms::ToolStripMenuItem^ estatisticasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ removerLinhaSelecionadaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ maisVelhosToolStripMenuItem;
 
 
 
@@ -98,11 +99,12 @@ namespace ProjCLR {
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verLinhaParaAdicionarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reiniciarDatagridToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->removerLinhaSelecionadaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->delegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostrarColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estatisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->removerLinhaSelecionadaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->maisVelhosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -118,6 +120,7 @@ namespace ProjCLR {
 			});
 			this->data_infos->Location = System::Drawing::Point(12, 137);
 			this->data_infos->Name = L"data_infos";
+			this->data_infos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->data_infos->Size = System::Drawing::Size(534, 423);
 			this->data_infos->TabIndex = 0;
 			// 
@@ -254,6 +257,13 @@ namespace ProjCLR {
 			this->reiniciarDatagridToolStripMenuItem->Text = L"Reiniciar Datagrid";
 			this->reiniciarDatagridToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ReiniciarDatagridToolStripMenuItem_Click);
 			// 
+			// removerLinhaSelecionadaToolStripMenuItem
+			// 
+			this->removerLinhaSelecionadaToolStripMenuItem->Name = L"removerLinhaSelecionadaToolStripMenuItem";
+			this->removerLinhaSelecionadaToolStripMenuItem->Size = System::Drawing::Size(300, 22);
+			this->removerLinhaSelecionadaToolStripMenuItem->Text = L"Remover linha selecionada";
+			this->removerLinhaSelecionadaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::RemoverLinhaSelecionadaToolStripMenuItem_Click);
+			// 
 			// delegadoToolStripMenuItem
 			// 
 			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
@@ -280,16 +290,17 @@ namespace ProjCLR {
 			// 
 			// estatisticasToolStripMenuItem
 			// 
+			this->estatisticasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->maisVelhosToolStripMenuItem });
 			this->estatisticasToolStripMenuItem->Name = L"estatisticasToolStripMenuItem";
 			this->estatisticasToolStripMenuItem->Size = System::Drawing::Size(76, 20);
 			this->estatisticasToolStripMenuItem->Text = L"Estatisticas";
 			// 
-			// removerLinhaSelecionadaToolStripMenuItem
+			// maisVelhosToolStripMenuItem
 			// 
-			this->removerLinhaSelecionadaToolStripMenuItem->Name = L"removerLinhaSelecionadaToolStripMenuItem";
-			this->removerLinhaSelecionadaToolStripMenuItem->Size = System::Drawing::Size(300, 22);
-			this->removerLinhaSelecionadaToolStripMenuItem->Text = L"Remover linha selecionada";
-			this->removerLinhaSelecionadaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::RemoverLinhaSelecionadaToolStripMenuItem_Click);
+			this->maisVelhosToolStripMenuItem->Name = L"maisVelhosToolStripMenuItem";
+			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->maisVelhosToolStripMenuItem->Text = L"Mais velho(s)";
+			this->maisVelhosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MaisVelhosToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -377,6 +388,31 @@ private: void mostra_adicionar()
 
 	}
 
+//Função mais velhos
+private: void mais_velhos()
+	{
+	int index = data_infos->Rows->Count - 1;
+	int data_velho = Convert::ToInt16(data_infos->Rows[0]->Cells[2]->Value);
+	String^ resultado = "Mais velho(s):\r\n";
+
+	for (size_t i = 1; i < index; i++)
+	{
+		if (Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value) < data_velho)
+		{
+			data_velho = Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value);
+		}
+	}
+
+	for (size_t i = 1; i < index; i++)
+	{
+		if (Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value) == data_velho)
+		{
+			resultado = resultado + Convert::ToString(data_infos->Rows[i]->Cells[0]->Value) + ", " + Convert::ToString(data_infos->Rows[i]->Cells[2]->Value) + "\r\n";
+		}
+	}
+	txt_result->Text = resultado;
+	}
+
 private: void mostra_delegado()
 	{
 		if (data_infos->Columns["Delegado"]->Visible == false)
@@ -409,8 +445,9 @@ private: System::Void Bt_localiza_Click(System::Object^ sender, System::EventArg
 		if (data_infos->Rows[i]->Cells[0]->Value->ToString()->ToUpper()==busca)
 		{
 			txt_result->Text = data_infos->Rows[i]->Cells[0]->Value->ToString();
+		
 		}
-
+		
 		index--;
 	}
 
@@ -419,26 +456,7 @@ private: System::Void Bt_localiza_Click(System::Object^ sender, System::EventArg
 //Encontra o mais velho ou os mais velhos 
 private: System::Void Bt_velhos_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-	int index = data_infos->Rows->Count - 1;
-	int data_velho = Convert::ToInt16(data_infos->Rows[0]->Cells[2]->Value);
-	String^ resultado = "Mais velho(s):\r\n";
-	
-	for (size_t i =1; i < index; i++)
-	{
-		if (Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value)<data_velho)
-		{
-			data_velho = Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value);
-		}
-	}
-	
-	for (size_t i = 1; i < index; i++)
-	{
-		if (Convert::ToInt16(data_infos->Rows[i]->Cells[2]->Value) == data_velho)
-		{
-			resultado = resultado + Convert::ToString(data_infos->Rows[i]->Cells[0]->Value) + ", " + Convert::ToString(data_infos->Rows[i]->Cells[2]->Value) + "\r\n";
-		}
-	}
-	txt_result->Text = resultado;
+	mais_velhos();
 	}
 
 private: System::Void Bt_freguesia_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -490,8 +508,7 @@ private: System::Void ReiniciarDatagridToolStripMenuItem_Click(System::Object^ s
 	inicializa();
 	}
 
-private: System::Void Txt_result_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+private: System::Void Txt_result_TextChanged(System::Object^ sender, System::EventArgs^ e) {}
 
 //Apagar linha selecionada
 private: System::Void RemoverLinhaSelecionadaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -505,6 +522,11 @@ private: System::Void RemoverLinhaSelecionadaToolStripMenuItem_Click(System::Obj
 			data_infos->Rows->RemoveAt(i);
 		}
 	}
+	}
+
+private: System::Void MaisVelhosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	mais_velhos();
 	}
 };
 }
