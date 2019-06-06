@@ -60,6 +60,7 @@ namespace ProjCLR {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nascimento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Sexo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Delegado;
+	private: System::Windows::Forms::ToolStripMenuItem^ estatisticasToolStripMenuItem;
 
 
 
@@ -99,6 +100,7 @@ namespace ProjCLR {
 			this->delegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostrarColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->estatisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -216,9 +218,9 @@ namespace ProjCLR {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->toolStripMenuItem1,
-					this->delegadoToolStripMenuItem
+					this->delegadoToolStripMenuItem, this->estatisticasToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -273,6 +275,12 @@ namespace ProjCLR {
 			this->sortearDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
 			this->sortearDelegadoToolStripMenuItem->Text = L"Sortear delegado";
 			this->sortearDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::SortearDelegadoToolStripMenuItem_Click);
+			// 
+			// estatisticasToolStripMenuItem
+			// 
+			this->estatisticasToolStripMenuItem->Name = L"estatisticasToolStripMenuItem";
+			this->estatisticasToolStripMenuItem->Size = System::Drawing::Size(76, 20);
+			this->estatisticasToolStripMenuItem->Text = L"Estatisticas";
 			// 
 			// Form1
 			// 
