@@ -60,7 +60,7 @@ namespace ProjCLR {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nascimento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Sexo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Delegado;
-	private: System::Windows::Forms::ToolStripMenuItem^ apagarLinhaSelecionadaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ estatisticasToolStripMenuItem;
 
 
 
@@ -97,10 +97,10 @@ namespace ProjCLR {
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verLinhaParaAdicionarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reiniciarDatagridToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->apagarLinhaSelecionadaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->delegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostrarColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->estatisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -116,7 +116,6 @@ namespace ProjCLR {
 			});
 			this->data_infos->Location = System::Drawing::Point(12, 137);
 			this->data_infos->Name = L"data_infos";
-			this->data_infos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->data_infos->Size = System::Drawing::Size(534, 423);
 			this->data_infos->TabIndex = 0;
 			// 
@@ -219,9 +218,9 @@ namespace ProjCLR {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->toolStripMenuItem1,
-					this->delegadoToolStripMenuItem
+					this->delegadoToolStripMenuItem, this->estatisticasToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -231,9 +230,9 @@ namespace ProjCLR {
 			// 
 			// toolStripMenuItem1
 			// 
-			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->verLinhaParaAdicionarToolStripMenuItem,
-					this->reiniciarDatagridToolStripMenuItem, this->apagarLinhaSelecionadaToolStripMenuItem
+					this->reiniciarDatagridToolStripMenuItem
 			});
 			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
 			this->toolStripMenuItem1->Size = System::Drawing::Size(64, 20);
@@ -252,13 +251,6 @@ namespace ProjCLR {
 			this->reiniciarDatagridToolStripMenuItem->Size = System::Drawing::Size(300, 22);
 			this->reiniciarDatagridToolStripMenuItem->Text = L"Reiniciar Datagrid";
 			this->reiniciarDatagridToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ReiniciarDatagridToolStripMenuItem_Click);
-			// 
-			// apagarLinhaSelecionadaToolStripMenuItem
-			// 
-			this->apagarLinhaSelecionadaToolStripMenuItem->Name = L"apagarLinhaSelecionadaToolStripMenuItem";
-			this->apagarLinhaSelecionadaToolStripMenuItem->Size = System::Drawing::Size(300, 22);
-			this->apagarLinhaSelecionadaToolStripMenuItem->Text = L"Apagar linha selecionada";
-			this->apagarLinhaSelecionadaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ApagarLinhaSelecionadaToolStripMenuItem_Click);
 			// 
 			// delegadoToolStripMenuItem
 			// 
@@ -283,6 +275,12 @@ namespace ProjCLR {
 			this->sortearDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
 			this->sortearDelegadoToolStripMenuItem->Text = L"Sortear delegado";
 			this->sortearDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::SortearDelegadoToolStripMenuItem_Click);
+			// 
+			// estatisticasToolStripMenuItem
+			// 
+			this->estatisticasToolStripMenuItem->Name = L"estatisticasToolStripMenuItem";
+			this->estatisticasToolStripMenuItem->Size = System::Drawing::Size(76, 20);
+			this->estatisticasToolStripMenuItem->Text = L"Estatisticas";
 			// 
 			// Form1
 			// 
@@ -490,14 +488,6 @@ private: System::Void ApagarLinhaSelecionadaToolStripMenuItem_Click(System::Obje
 	{
 	int index = data_infos->Rows->Count - 1;
 
-	for (size_t i = 0; i < index; i++)
-	{
-		if (data_infos->Rows[i]->Selected)
-		{
-			data_infos->Rows->RemoveAt(i);
-		}
-	}
 
-	}
 };
 }
