@@ -63,6 +63,7 @@ namespace ProjCLR {
 	private: System::Windows::Forms::ToolStripMenuItem^ estatisticasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ removerLinhaSelecionadaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ maisVelhosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ guardaDelegadoToolStripMenuItem;
 
 
 
@@ -105,6 +106,7 @@ namespace ProjCLR {
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estatisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->maisVelhosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->guardaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -184,7 +186,7 @@ namespace ProjCLR {
 			// txt_localiza
 			// 
 			this->txt_localiza->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->txt_localiza->Location = System::Drawing::Point(13, 85);
+			this->txt_localiza->Location = System::Drawing::Point(118, 85);
 			this->txt_localiza->Name = L"txt_localiza";
 			this->txt_localiza->Size = System::Drawing::Size(217, 20);
 			this->txt_localiza->TabIndex = 3;
@@ -266,9 +268,9 @@ namespace ProjCLR {
 			// 
 			// delegadoToolStripMenuItem
 			// 
-			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->mostrarColunaDelegadoToolStripMenuItem,
-					this->sortearDelegadoToolStripMenuItem
+					this->sortearDelegadoToolStripMenuItem, this->guardaDelegadoToolStripMenuItem
 			});
 			this->delegadoToolStripMenuItem->Name = L"delegadoToolStripMenuItem";
 			this->delegadoToolStripMenuItem->Size = System::Drawing::Size(69, 20);
@@ -298,9 +300,16 @@ namespace ProjCLR {
 			// maisVelhosToolStripMenuItem
 			// 
 			this->maisVelhosToolStripMenuItem->Name = L"maisVelhosToolStripMenuItem";
-			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(144, 22);
 			this->maisVelhosToolStripMenuItem->Text = L"Mais velho(s)";
 			this->maisVelhosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MaisVelhosToolStripMenuItem_Click);
+			// 
+			// guardaDelegadoToolStripMenuItem
+			// 
+			this->guardaDelegadoToolStripMenuItem->Name = L"guardaDelegadoToolStripMenuItem";
+			this->guardaDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
+			this->guardaDelegadoToolStripMenuItem->Text = L"Guarda delegado";
+			this->guardaDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::GuardaDelegadoToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -388,7 +397,8 @@ private: void mostra_adicionar()
 
 	}
 
-//Função mais velhos
+//Função que encontra o mais velho ou os mais velhos
+//Escreve os nomes e o ano de nascimento na textbox
 private: void mais_velhos()
 	{
 	int index = data_infos->Rows->Count - 1;
@@ -453,7 +463,7 @@ private: System::Void Bt_localiza_Click(System::Object^ sender, System::EventArg
 
 	}
 
-//Encontra o mais velho ou os mais velhos 
+//Botão mais velhos 
 private: System::Void Bt_velhos_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	mais_velhos();
@@ -524,9 +534,28 @@ private: System::Void RemoverLinhaSelecionadaToolStripMenuItem_Click(System::Obj
 	}
 	}
 
+//Menu mais velhos
 private: System::Void MaisVelhosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	mais_velhos();
 	}
+
+//Guardar nome do delegado em ficheiro (incompleto)
+private: System::Void GuardaDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	String^ nome_delegado;
+	int index = data_infos->Rows->Count - 1;
+
+	for (size_t i = 0; i < index; i++)
+	{
+		if (data_infos->Rows[i]->Cells[4]->Value == "X")
+		{
+			nome_delegado = Convert::ToString(data_infos->Rows[i]->Cells[0]->Value);
+		}
+	}
+	MessageBox::Show(nome_delegado);
+	}
+
+
 };
 }
