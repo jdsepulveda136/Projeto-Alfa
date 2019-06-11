@@ -8,6 +8,7 @@ namespace ProjCLR {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for Form1
@@ -66,6 +67,8 @@ namespace ProjCLR {
 	private: System::Windows::Forms::ToolStripMenuItem^ guardaDelegadoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ clacularMédiasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ melhorAlunoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ mostraNegativasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ mostraReprovadosToolStripMenuItem;
 
 
 
@@ -112,6 +115,8 @@ namespace ProjCLR {
 			this->maisVelhosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->clacularMédiasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->melhorAlunoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mostraNegativasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mostraReprovadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -125,6 +130,7 @@ namespace ProjCLR {
 				this->Nome, this->Freguesia,
 					this->Nascimento, this->Sexo, this->Delegado
 			});
+			this->data_infos->GridColor = System::Drawing::SystemColors::ActiveBorder;
 			this->data_infos->Location = System::Drawing::Point(12, 137);
 			this->data_infos->Name = L"data_infos";
 			this->data_infos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
@@ -304,9 +310,9 @@ namespace ProjCLR {
 			// 
 			// estatisticasToolStripMenuItem
 			// 
-			this->estatisticasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->estatisticasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->maisVelhosToolStripMenuItem,
-					this->clacularMédiasToolStripMenuItem, this->melhorAlunoToolStripMenuItem
+					this->clacularMédiasToolStripMenuItem, this->melhorAlunoToolStripMenuItem, this->mostraNegativasToolStripMenuItem, this->mostraReprovadosToolStripMenuItem
 			});
 			this->estatisticasToolStripMenuItem->Name = L"estatisticasToolStripMenuItem";
 			this->estatisticasToolStripMenuItem->Size = System::Drawing::Size(76, 20);
@@ -332,6 +338,21 @@ namespace ProjCLR {
 			this->melhorAlunoToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->melhorAlunoToolStripMenuItem->Text = L"Melhor aluno";
 			this->melhorAlunoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MelhorAlunoToolStripMenuItem_Click);
+			// 
+			// mostraNegativasToolStripMenuItem
+			// 
+			this->mostraNegativasToolStripMenuItem->BackColor = System::Drawing::SystemColors::Control;
+			this->mostraNegativasToolStripMenuItem->Name = L"mostraNegativasToolStripMenuItem";
+			this->mostraNegativasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->mostraNegativasToolStripMenuItem->Text = L"Mostra negativas";
+			this->mostraNegativasToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraNegativasToolStripMenuItem_Click);
+			// 
+			// mostraReprovadosToolStripMenuItem
+			// 
+			this->mostraReprovadosToolStripMenuItem->Name = L"mostraReprovadosToolStripMenuItem";
+			this->mostraReprovadosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->mostraReprovadosToolStripMenuItem->Text = L"Mostra reprovados";
+			this->mostraReprovadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraReprovadosToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -367,11 +388,12 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 		inicializa();
 
-		data_infos->ColumnCount = 15;
+		data_infos->ColumnCount = 18;
 
-		for (int i = 5; i < 15; i++)
+		for (int i = 5; i < 17; i++)
 		{
 			data_infos->Columns[i]->Width = 35;
+			data_infos->Columns[i]->DefaultCellStyle->Alignment = DataGridViewContentAlignment::MiddleCenter;
 		}
 
 		data_infos->Columns[5]->Name = "d1";
@@ -394,6 +416,16 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e)
 		data_infos->Columns[13]->HeaderText = "EF";
 		data_infos->Columns[14]->Name = "d10";
 		data_infos->Columns[14]->HeaderText = "MOR";
+		data_infos->Columns[15]->Name = "med";
+		data_infos->Columns[15]->HeaderText = "MED";
+		data_infos->Columns[16]->Name = "neg";
+		data_infos->Columns[16]->HeaderText = "NEG";
+		data_infos->Columns[17]->Name = "est";
+		data_infos->Columns[17]->HeaderText = "EST";
+
+		data_infos->Columns[15]->Visible = false;
+		data_infos->Columns[16]->Visible = false;
+		data_infos->Columns[17]->Visible = false;
 	
 		//data_infos->Rows[i]->Cells[j]->Value = geravalor();
 		
@@ -402,7 +434,7 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e)
 			for (size_t j = 0; j < 20; j++)
 			{
 				data_infos->Rows[j]->Cells[i]->Value = geravalor();
-				data_infos->Columns[i]->DefaultCellStyle->Alignment = DataGridViewContentAlignment::MiddleCenter;
+				
 			}
 		}
 		}
@@ -639,28 +671,30 @@ private: System::Void GuardaDelegadoToolStripMenuItem_Click(System::Object^ send
 	MessageBox::Show(nome_delegado);
 	}
 
-//Função que calcula as média e cria uma nova coluna com os resultados
+//Menu da média
 private: System::Void ClacularMédiasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 
-	int media = 0;
-
-	data_infos->ColumnCount = 16;
-
-	data_infos->Columns[15]->Name = "med";
-	data_infos->Columns[15]->HeaderText = "MED";
-	data_infos->Columns[15]->Width = 35;
-	data_infos->Columns[15]->DefaultCellStyle->Alignment = DataGridViewContentAlignment::MiddleCenter;
-
-	for (size_t linhas = 0; linhas < 20; linhas++)
-	{
-		for (size_t colunas = 5; colunas < 15; colunas++)
-		{
-			media = media + Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value);
-		}
-		media = media / 10;
-		data_infos->Rows[linhas]->Cells[15]->Value = media;
+	data_infos->Columns[15]->Visible = true;
+	calcula_media();
 	}
+
+//Função que calcula as média
+private: void calcula_media()
+	{
+		int media = 0;
+		int soma = 0;
+
+		for (size_t linhas = 0; linhas < 20; linhas++)
+		{
+			soma = 0;
+			for (size_t colunas = 5; colunas < 15; colunas++)
+			{
+				soma = soma + Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value);
+			}
+			media = soma / 10;
+			data_infos->Rows[linhas]->Cells[15]->Value = media;
+		}
 	}
 
 //Procura as média mais altas e escreve na textbox
@@ -689,8 +723,53 @@ private: System::Void MelhorAlunoToolStripMenuItem_Click(System::Object^ sender,
 		}
 	}
 
+	for (size_t linhas = 0; linhas < 20; linhas++)
+	{
+		for (size_t colunas = 5; colunas < 15; colunas++)
+		{
+			if (Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value) >=18)
+			{
+				data_infos->Rows[linhas]->Cells[colunas]->Style->ForeColor = Color::Green;
+			}
+		}
+	}
+
 	txt_result->Text = resultado;
 
 	}
+
+//Contar as negativas
+private: System::Void MostraNegativasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	data_infos->Columns[16]->Visible = true;
+	conta_negativas();
+	}
+
+private: void conta_negativas()
+	{
+	int contador = 0;
+
+	for (size_t linhas = 0; linhas < 20; linhas++)
+	{
+		int contador = 0;
+		for (size_t colunas = 5; colunas < 15; colunas++)
+		{
+			if (Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value) < 10)
+			{
+				data_infos->Rows[linhas]->Cells[colunas]->Style->BackColor = Color::Red;
+				contador++;
+			}
+		}
+		data_infos->Rows[linhas]->Cells[16]->Value = contador;
+
+	}
+	}
+
+
+private: System::Void MostraReprovadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+
+	}
+
 };
 }
