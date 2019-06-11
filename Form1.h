@@ -69,6 +69,7 @@ namespace ProjCLR {
 	private: System::Windows::Forms::ToolStripMenuItem^ melhorAlunoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mostraNegativasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mostraReprovadosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ mostraDelegadoToolStripMenuItem;
 
 
 
@@ -117,6 +118,7 @@ namespace ProjCLR {
 			this->melhorAlunoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostraNegativasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostraReprovadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mostraDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -279,9 +281,9 @@ namespace ProjCLR {
 			// 
 			// delegadoToolStripMenuItem
 			// 
-			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->delegadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->mostrarColunaDelegadoToolStripMenuItem,
-					this->sortearDelegadoToolStripMenuItem, this->guardaDelegadoToolStripMenuItem
+					this->sortearDelegadoToolStripMenuItem, this->guardaDelegadoToolStripMenuItem, this->mostraDelegadoToolStripMenuItem
 			});
 			this->delegadoToolStripMenuItem->Name = L"delegadoToolStripMenuItem";
 			this->delegadoToolStripMenuItem->Size = System::Drawing::Size(69, 20);
@@ -321,21 +323,21 @@ namespace ProjCLR {
 			// maisVelhosToolStripMenuItem
 			// 
 			this->maisVelhosToolStripMenuItem->Name = L"maisVelhosToolStripMenuItem";
-			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->maisVelhosToolStripMenuItem->Text = L"Mais velho(s)";
 			this->maisVelhosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MaisVelhosToolStripMenuItem_Click);
 			// 
 			// clacularMédiasToolStripMenuItem
 			// 
 			this->clacularMédiasToolStripMenuItem->Name = L"clacularMédiasToolStripMenuItem";
-			this->clacularMédiasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->clacularMédiasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->clacularMédiasToolStripMenuItem->Text = L"Calcular médias";
 			this->clacularMédiasToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ClacularMédiasToolStripMenuItem_Click);
 			// 
 			// melhorAlunoToolStripMenuItem
 			// 
 			this->melhorAlunoToolStripMenuItem->Name = L"melhorAlunoToolStripMenuItem";
-			this->melhorAlunoToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->melhorAlunoToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->melhorAlunoToolStripMenuItem->Text = L"Melhor aluno";
 			this->melhorAlunoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MelhorAlunoToolStripMenuItem_Click);
 			// 
@@ -343,16 +345,23 @@ namespace ProjCLR {
 			// 
 			this->mostraNegativasToolStripMenuItem->BackColor = System::Drawing::SystemColors::Control;
 			this->mostraNegativasToolStripMenuItem->Name = L"mostraNegativasToolStripMenuItem";
-			this->mostraNegativasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->mostraNegativasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->mostraNegativasToolStripMenuItem->Text = L"Mostra negativas";
 			this->mostraNegativasToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraNegativasToolStripMenuItem_Click);
 			// 
 			// mostraReprovadosToolStripMenuItem
 			// 
 			this->mostraReprovadosToolStripMenuItem->Name = L"mostraReprovadosToolStripMenuItem";
-			this->mostraReprovadosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->mostraReprovadosToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->mostraReprovadosToolStripMenuItem->Text = L"Mostra reprovados";
 			this->mostraReprovadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraReprovadosToolStripMenuItem_Click);
+			// 
+			// mostraDelegadoToolStripMenuItem
+			// 
+			this->mostraDelegadoToolStripMenuItem->Name = L"mostraDelegadoToolStripMenuItem";
+			this->mostraDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
+			this->mostraDelegadoToolStripMenuItem->Text = L"Mostra delegado";
+			this->mostraDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraDelegadoToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -390,11 +399,7 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e)
 
 		data_infos->ColumnCount = 18;
 
-		for (int i = 5; i < 17; i++)
-		{
-			data_infos->Columns[i]->Width = 35;
-			data_infos->Columns[i]->DefaultCellStyle->Alignment = DataGridViewContentAlignment::MiddleCenter;
-		}
+		
 
 		data_infos->Columns[5]->Name = "d1";
 		data_infos->Columns[5]->HeaderText = "POR";
@@ -427,7 +432,11 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e)
 		data_infos->Columns[16]->Visible = false;
 		data_infos->Columns[17]->Visible = false;
 	
-		//data_infos->Rows[i]->Cells[j]->Value = geravalor();
+		for (int i = 5; i < 17; i++)
+		{
+			data_infos->Columns[i]->Width = 35;
+			data_infos->Columns[i]->DefaultCellStyle->Alignment = DataGridViewContentAlignment::MiddleCenter;
+		}
 		
 		for (size_t i = 5; i < 15; i++)
 		{
@@ -659,6 +668,8 @@ private: System::Void MaisVelhosToolStripMenuItem_Click(System::Object^ sender, 
 private: System::Void GuardaDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	String^ nome_delegado;
+	StreamWriter^ fp = gcnew StreamWriter("DELEGADO.TXT");
+
 	int index = data_infos->Rows->Count - 1;
 
 	for (size_t i = 0; i < index; i++)
@@ -668,7 +679,10 @@ private: System::Void GuardaDelegadoToolStripMenuItem_Click(System::Object^ send
 			nome_delegado = Convert::ToString(data_infos->Rows[i]->Cells[0]->Value);
 		}
 	}
-	MessageBox::Show(nome_delegado);
+
+	fp->WriteLine(nome_delegado);
+	fp->Close();
+
 	}
 
 //Menu da média
@@ -729,7 +743,7 @@ private: System::Void MelhorAlunoToolStripMenuItem_Click(System::Object^ sender,
 		{
 			if (Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value) >=18)
 			{
-				data_infos->Rows[linhas]->Cells[colunas]->Style->ForeColor = Color::Green;
+				data_infos->Rows[linhas]->Cells[colunas]->Style->BackColor = Color::Green;
 			}
 		}
 	}
@@ -738,13 +752,14 @@ private: System::Void MelhorAlunoToolStripMenuItem_Click(System::Object^ sender,
 
 	}
 
-//Contar as negativas
+//Botão contar as negativas
 private: System::Void MostraNegativasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	data_infos->Columns[16]->Visible = true;
 	conta_negativas();
 	}
 
+//Função que conta as negativas 
 private: void conta_negativas()
 	{
 	int contador = 0;
@@ -756,9 +771,14 @@ private: void conta_negativas()
 		{
 			if (Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value) < 10)
 			{
-				data_infos->Rows[linhas]->Cells[colunas]->Style->BackColor = Color::Red;
+				data_infos->Rows[linhas]->Cells[colunas]->Style->BackColor = Color::OrangeRed;
 				contador++;
 			}
+			if (Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value) < 8)
+			{
+				data_infos->Rows[linhas]->Cells[colunas]->Style->BackColor = Color::Red;
+			}
+
 		}
 		data_infos->Rows[linhas]->Cells[16]->Value = contador;
 
@@ -768,8 +788,78 @@ private: void conta_negativas()
 
 private: System::Void MostraReprovadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
+	data_infos->Columns[17]->Visible = true;
+	reprovados();
+	}
+
+private: void reprovados()
+	{
+	bool reprovados = false;
+
+	conta_negativas();
+
+	for (size_t linhas = 0; linhas < 20; linhas++)
+	{
+		reprovados = false;
+		for (size_t colunas = 5; colunas < 15; colunas++)
+		{
+			//Verifica se o aluno tem uma nota abaixo de 8
+			if (Convert::ToDouble(data_infos->Rows[linhas]->Cells[colunas]->Value) < 8)
+			{
+				reprovados = true;
+			}
+		}
+
+		//Verifica se o numero de negativas é maior que 2
+		if (Convert::ToDouble(data_infos->Rows[linhas]->Cells[16]->Value)>2)
+		{
+			reprovados = true;
+		}
+
+		//Coloca o estado na grid
+		if (reprovados)
+		{
+			data_infos->Rows[linhas]->Cells[17]->Value = "Rep.";
+		}
+		else
+		{
+			data_infos->Rows[linhas]->Cells[17]->Value = "Ap.";
+		}
+
+	}
+	}
+
+private: System::Void MostraDelegadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	int n_linhas = data_infos->Rows->Count - 1;
+	StreamReader^ fp = gcnew StreamReader("DELEGADO.TXT"); String^ nome = fp->ReadLine(); if (existe(nome))
+	{
+		for (size_t i = 0; i < n_linhas; i++)
+		{ //limpa a coluna:
+			data_infos->Rows[i]->Cells[4]->Value = "";
+		}
+		for (size_t i = 0; i < n_linhas; i++)
+		{
+			if (nome == data_infos->Rows[i]->Cells[0]->Value->ToString())
+			{ //o nome foi encontrado:
+				data_infos->Rows[i]->Cells[4]->Value = "X";
+			}
+		}
+	}
+	fp->Close();
 
 	}
 
+private: bool existe(String^ s)
+{
+	//afirmação: esse nome não existe:
+	bool encontrado = false;
+	for (size_t i = 0; i < data_infos->Rows->Count - 1; i++)
+	{
+		//se existir na grid, trocar o estado da vairável de boole:
+		if (data_infos->Rows[i]->Cells[0]->Value->ToString() == s) encontrado = true;
+	}
+	return encontrado;
+}
 };
 }
