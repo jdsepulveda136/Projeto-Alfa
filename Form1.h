@@ -70,6 +70,9 @@ namespace ProjCLR {
 	private: System::Windows::Forms::ToolStripMenuItem^ mostraNegativasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mostraReprovadosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mostraDelegadoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ gerarNotasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ficheiroToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ sairToolStripMenuItem;
 
 
 
@@ -104,21 +107,24 @@ namespace ProjCLR {
 			this->bt_velhos = (gcnew System::Windows::Forms::Button());
 			this->bt_freguesia = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->ficheiroToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->sairToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verLinhaParaAdicionarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reiniciarDatagridToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->gerarNotasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->removerLinhaSelecionadaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->delegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostrarColunaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sortearDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->guardaDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mostraDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estatisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->maisVelhosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->clacularMédiasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->melhorAlunoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostraNegativasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostraReprovadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->mostraDelegadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -207,7 +213,7 @@ namespace ProjCLR {
 			// txt_result
 			// 
 			this->txt_result->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->txt_result->Location = System::Drawing::Point(714, 29);
+			this->txt_result->Location = System::Drawing::Point(480, 27);
 			this->txt_result->Multiline = true;
 			this->txt_result->Name = L"txt_result";
 			this->txt_result->Size = System::Drawing::Size(225, 89);
@@ -238,9 +244,10 @@ namespace ProjCLR {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->toolStripMenuItem1,
-					this->delegadoToolStripMenuItem, this->estatisticasToolStripMenuItem
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->ficheiroToolStripMenuItem,
+					this->toolStripMenuItem1, this->delegadoToolStripMenuItem, this->estatisticasToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -248,11 +255,25 @@ namespace ProjCLR {
 			this->menuStrip1->TabIndex = 8;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
+			// ficheiroToolStripMenuItem
+			// 
+			this->ficheiroToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->sairToolStripMenuItem });
+			this->ficheiroToolStripMenuItem->Name = L"ficheiroToolStripMenuItem";
+			this->ficheiroToolStripMenuItem->Size = System::Drawing::Size(61, 20);
+			this->ficheiroToolStripMenuItem->Text = L"Ficheiro";
+			// 
+			// sairToolStripMenuItem
+			// 
+			this->sairToolStripMenuItem->Name = L"sairToolStripMenuItem";
+			this->sairToolStripMenuItem->Size = System::Drawing::Size(93, 22);
+			this->sairToolStripMenuItem->Text = L"Sair";
+			this->sairToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::SairToolStripMenuItem_Click);
+			// 
 			// toolStripMenuItem1
 			// 
-			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->verLinhaParaAdicionarToolStripMenuItem,
-					this->reiniciarDatagridToolStripMenuItem, this->removerLinhaSelecionadaToolStripMenuItem
+					this->reiniciarDatagridToolStripMenuItem, this->gerarNotasToolStripMenuItem, this->removerLinhaSelecionadaToolStripMenuItem
 			});
 			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
 			this->toolStripMenuItem1->Size = System::Drawing::Size(64, 20);
@@ -271,6 +292,13 @@ namespace ProjCLR {
 			this->reiniciarDatagridToolStripMenuItem->Size = System::Drawing::Size(300, 22);
 			this->reiniciarDatagridToolStripMenuItem->Text = L"Reiniciar Datagrid";
 			this->reiniciarDatagridToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ReiniciarDatagridToolStripMenuItem_Click);
+			// 
+			// gerarNotasToolStripMenuItem
+			// 
+			this->gerarNotasToolStripMenuItem->Name = L"gerarNotasToolStripMenuItem";
+			this->gerarNotasToolStripMenuItem->Size = System::Drawing::Size(300, 22);
+			this->gerarNotasToolStripMenuItem->Text = L"Gerar notas";
+			this->gerarNotasToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::GerarNotasToolStripMenuItem_Click);
 			// 
 			// removerLinhaSelecionadaToolStripMenuItem
 			// 
@@ -310,6 +338,13 @@ namespace ProjCLR {
 			this->guardaDelegadoToolStripMenuItem->Text = L"Guarda delegado";
 			this->guardaDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::GuardaDelegadoToolStripMenuItem_Click);
 			// 
+			// mostraDelegadoToolStripMenuItem
+			// 
+			this->mostraDelegadoToolStripMenuItem->Name = L"mostraDelegadoToolStripMenuItem";
+			this->mostraDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
+			this->mostraDelegadoToolStripMenuItem->Text = L"Mostra delegado";
+			this->mostraDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraDelegadoToolStripMenuItem_Click);
+			// 
 			// estatisticasToolStripMenuItem
 			// 
 			this->estatisticasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
@@ -338,7 +373,7 @@ namespace ProjCLR {
 			// 
 			this->melhorAlunoToolStripMenuItem->Name = L"melhorAlunoToolStripMenuItem";
 			this->melhorAlunoToolStripMenuItem->Size = System::Drawing::Size(173, 22);
-			this->melhorAlunoToolStripMenuItem->Text = L"Melhor aluno";
+			this->melhorAlunoToolStripMenuItem->Text = L"Melhores alunos";
 			this->melhorAlunoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MelhorAlunoToolStripMenuItem_Click);
 			// 
 			// mostraNegativasToolStripMenuItem
@@ -355,13 +390,6 @@ namespace ProjCLR {
 			this->mostraReprovadosToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->mostraReprovadosToolStripMenuItem->Text = L"Mostra reprovados";
 			this->mostraReprovadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraReprovadosToolStripMenuItem_Click);
-			// 
-			// mostraDelegadoToolStripMenuItem
-			// 
-			this->mostraDelegadoToolStripMenuItem->Name = L"mostraDelegadoToolStripMenuItem";
-			this->mostraDelegadoToolStripMenuItem->Size = System::Drawing::Size(223, 22);
-			this->mostraDelegadoToolStripMenuItem->Text = L"Mostra delegado";
-			this->mostraDelegadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraDelegadoToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -473,6 +501,7 @@ private: void inicializa()
 		data_infos->Rows->Add("Silvério Silva Teixeira", "Lamaçães", 2001, "M");
 		data_infos->Rows->Add("Teodoro Armando Matos", "Maximinos", 2002, "M");
 		data_infos->Rows->Add("Zacarias Alexandre Sampaio", "Ferreiros", 1996, "M");
+
 		}
 
 //Função mostrar/esconder linha e cabeçalhos
@@ -567,6 +596,7 @@ private: int geravalor()
 private: System::Void Bt_limpa_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 		inicializa();
+		
 		}
 
 private: System::Void Bt_localiza_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -640,6 +670,7 @@ private: System::Void SortearDelegadoToolStripMenuItem_Click(System::Object^ sen
 private: System::Void ReiniciarDatagridToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	inicializa();
+
 	}
 
 private: System::Void Txt_result_TextChanged(System::Object^ sender, System::EventArgs^ e) {}
@@ -696,8 +727,8 @@ private: System::Void ClacularMédiasToolStripMenuItem_Click(System::Object^ send
 //Função que calcula as média
 private: void calcula_media()
 	{
-		int media = 0;
-		int soma = 0;
+		float media = 0;
+		float soma = 0;
 
 		for (size_t linhas = 0; linhas < 20; linhas++)
 		{
@@ -707,8 +738,10 @@ private: void calcula_media()
 				soma = soma + Convert::ToInt16(data_infos->Rows[linhas]->Cells[colunas]->Value);
 			}
 			media = soma / 10;
-			data_infos->Rows[linhas]->Cells[15]->Value = media;
+			data_infos->Rows[linhas]->Cells[15]->Value = media.ToString("f2");
 		}
+
+		data_infos->Columns[15]->DefaultCellStyle->ForeColor = Color::Blue;
 	}
 
 //Procura as média mais altas e escreve na textbox
@@ -861,5 +894,24 @@ private: bool existe(String^ s)
 	}
 	return encontrado;
 }
+
+//Gerar notas aleatorias
+private: System::Void GerarNotasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	for (size_t i = 5; i < 15; i++)
+	{
+		for (size_t j = 0; j < 20; j++)
+		{
+			data_infos->Rows[j]->Cells[i]->Value = geravalor();
+
+		}
+	}
+	}
+
+//Fechar o programa
+private: System::Void SairToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	Application::Exit();
+	}
 };
 }
