@@ -73,6 +73,19 @@ namespace ProjCLR {
 	private: System::Windows::Forms::ToolStripMenuItem^ gerarNotasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ficheiroToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ sairToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ sobreToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ autorToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ versãoToolStripMenuItem;
+	private: System::Windows::Forms::DataGridView^ data_copia;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ copia_nome;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ copia_freguesia;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ copia_sexo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ copia_estado;
+	private: System::Windows::Forms::Button^ bt_copia;
+	private: System::Windows::Forms::TextBox^ txt_copia;
+	private: System::Windows::Forms::RadioButton^ rd_masc;
+	private: System::Windows::Forms::RadioButton^ rd_fem;
+	private: System::Windows::Forms::RadioButton^ rd_todos;
 
 
 
@@ -125,8 +138,22 @@ namespace ProjCLR {
 			this->melhorAlunoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostraNegativasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mostraReprovadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->sobreToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->autorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->versãoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->data_copia = (gcnew System::Windows::Forms::DataGridView());
+			this->copia_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->copia_freguesia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->copia_sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->copia_estado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->bt_copia = (gcnew System::Windows::Forms::Button());
+			this->txt_copia = (gcnew System::Windows::Forms::TextBox());
+			this->rd_masc = (gcnew System::Windows::Forms::RadioButton());
+			this->rd_fem = (gcnew System::Windows::Forms::RadioButton());
+			this->rd_todos = (gcnew System::Windows::Forms::RadioButton());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->BeginInit();
 			this->menuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_copia))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// data_infos
@@ -142,7 +169,7 @@ namespace ProjCLR {
 			this->data_infos->Location = System::Drawing::Point(12, 137);
 			this->data_infos->Name = L"data_infos";
 			this->data_infos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->data_infos->Size = System::Drawing::Size(927, 423);
+			this->data_infos->Size = System::Drawing::Size(552, 423);
 			this->data_infos->TabIndex = 0;
 			// 
 			// Nome
@@ -183,23 +210,25 @@ namespace ProjCLR {
 			// bt_limpa
 			// 
 			this->bt_limpa->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->bt_limpa->BackColor = System::Drawing::SystemColors::ControlLightLight;
 			this->bt_limpa->Location = System::Drawing::Point(12, 29);
 			this->bt_limpa->Name = L"bt_limpa";
 			this->bt_limpa->Size = System::Drawing::Size(218, 23);
 			this->bt_limpa->TabIndex = 1;
 			this->bt_limpa->Text = L"Reinicia Datagrid";
-			this->bt_limpa->UseVisualStyleBackColor = true;
+			this->bt_limpa->UseVisualStyleBackColor = false;
 			this->bt_limpa->Click += gcnew System::EventHandler(this, &Form1::Bt_limpa_Click);
 			// 
 			// bt_localiza
 			// 
 			this->bt_localiza->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->bt_localiza->BackColor = System::Drawing::SystemColors::ControlLightLight;
 			this->bt_localiza->Location = System::Drawing::Point(12, 58);
 			this->bt_localiza->Name = L"bt_localiza";
 			this->bt_localiza->Size = System::Drawing::Size(218, 23);
 			this->bt_localiza->TabIndex = 2;
 			this->bt_localiza->Text = L"Localiza Nome";
-			this->bt_localiza->UseVisualStyleBackColor = true;
+			this->bt_localiza->UseVisualStyleBackColor = false;
 			this->bt_localiza->Click += gcnew System::EventHandler(this, &Form1::Bt_localiza_Click);
 			// 
 			// txt_localiza
@@ -218,36 +247,39 @@ namespace ProjCLR {
 			this->txt_result->Name = L"txt_result";
 			this->txt_result->Size = System::Drawing::Size(225, 89);
 			this->txt_result->TabIndex = 4;
+			this->txt_result->Visible = false;
 			this->txt_result->TextChanged += gcnew System::EventHandler(this, &Form1::Txt_result_TextChanged);
 			// 
 			// bt_velhos
 			// 
 			this->bt_velhos->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->bt_velhos->BackColor = System::Drawing::SystemColors::ControlLightLight;
 			this->bt_velhos->Location = System::Drawing::Point(236, 29);
 			this->bt_velhos->Name = L"bt_velhos";
 			this->bt_velhos->Size = System::Drawing::Size(218, 23);
 			this->bt_velhos->TabIndex = 5;
 			this->bt_velhos->Text = L"Quem é o mais velho\?";
-			this->bt_velhos->UseVisualStyleBackColor = true;
+			this->bt_velhos->UseVisualStyleBackColor = false;
 			this->bt_velhos->Click += gcnew System::EventHandler(this, &Form1::Bt_velhos_Click);
 			// 
 			// bt_freguesia
 			// 
 			this->bt_freguesia->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->bt_freguesia->BackColor = System::Drawing::SystemColors::ControlLightLight;
 			this->bt_freguesia->Location = System::Drawing::Point(236, 58);
 			this->bt_freguesia->Name = L"bt_freguesia";
 			this->bt_freguesia->Size = System::Drawing::Size(218, 23);
 			this->bt_freguesia->TabIndex = 6;
 			this->bt_freguesia->Text = L"Quantos há desta freguesia";
-			this->bt_freguesia->UseVisualStyleBackColor = true;
+			this->bt_freguesia->UseVisualStyleBackColor = false;
 			this->bt_freguesia->Click += gcnew System::EventHandler(this, &Form1::Bt_freguesia_Click);
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->ficheiroToolStripMenuItem,
-					this->toolStripMenuItem1, this->delegadoToolStripMenuItem, this->estatisticasToolStripMenuItem
+					this->toolStripMenuItem1, this->delegadoToolStripMenuItem, this->estatisticasToolStripMenuItem, this->sobreToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -358,21 +390,21 @@ namespace ProjCLR {
 			// maisVelhosToolStripMenuItem
 			// 
 			this->maisVelhosToolStripMenuItem->Name = L"maisVelhosToolStripMenuItem";
-			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->maisVelhosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->maisVelhosToolStripMenuItem->Text = L"Mais velho(s)";
 			this->maisVelhosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MaisVelhosToolStripMenuItem_Click);
 			// 
 			// clacularMédiasToolStripMenuItem
 			// 
 			this->clacularMédiasToolStripMenuItem->Name = L"clacularMédiasToolStripMenuItem";
-			this->clacularMédiasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->clacularMédiasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->clacularMédiasToolStripMenuItem->Text = L"Calcular médias";
 			this->clacularMédiasToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ClacularMédiasToolStripMenuItem_Click);
 			// 
 			// melhorAlunoToolStripMenuItem
 			// 
 			this->melhorAlunoToolStripMenuItem->Name = L"melhorAlunoToolStripMenuItem";
-			this->melhorAlunoToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->melhorAlunoToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->melhorAlunoToolStripMenuItem->Text = L"Melhores alunos";
 			this->melhorAlunoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MelhorAlunoToolStripMenuItem_Click);
 			// 
@@ -380,24 +412,151 @@ namespace ProjCLR {
 			// 
 			this->mostraNegativasToolStripMenuItem->BackColor = System::Drawing::SystemColors::Control;
 			this->mostraNegativasToolStripMenuItem->Name = L"mostraNegativasToolStripMenuItem";
-			this->mostraNegativasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->mostraNegativasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->mostraNegativasToolStripMenuItem->Text = L"Mostra negativas";
 			this->mostraNegativasToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraNegativasToolStripMenuItem_Click);
 			// 
 			// mostraReprovadosToolStripMenuItem
 			// 
 			this->mostraReprovadosToolStripMenuItem->Name = L"mostraReprovadosToolStripMenuItem";
-			this->mostraReprovadosToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->mostraReprovadosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->mostraReprovadosToolStripMenuItem->Text = L"Mostra reprovados";
 			this->mostraReprovadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::MostraReprovadosToolStripMenuItem_Click);
+			// 
+			// sobreToolStripMenuItem
+			// 
+			this->sobreToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->autorToolStripMenuItem,
+					this->versãoToolStripMenuItem
+			});
+			this->sobreToolStripMenuItem->Name = L"sobreToolStripMenuItem";
+			this->sobreToolStripMenuItem->Size = System::Drawing::Size(49, 20);
+			this->sobreToolStripMenuItem->Text = L"Sobre";
+			// 
+			// autorToolStripMenuItem
+			// 
+			this->autorToolStripMenuItem->Name = L"autorToolStripMenuItem";
+			this->autorToolStripMenuItem->Size = System::Drawing::Size(108, 22);
+			this->autorToolStripMenuItem->Text = L"Autor";
+			this->autorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::AutorToolStripMenuItem_Click);
+			// 
+			// versãoToolStripMenuItem
+			// 
+			this->versãoToolStripMenuItem->Name = L"versãoToolStripMenuItem";
+			this->versãoToolStripMenuItem->Size = System::Drawing::Size(108, 22);
+			this->versãoToolStripMenuItem->Text = L"Versão";
+			this->versãoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::VersãoToolStripMenuItem_Click);
+			// 
+			// data_copia
+			// 
+			this->data_copia->AllowUserToAddRows = false;
+			this->data_copia->AllowUserToDeleteRows = false;
+			this->data_copia->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->data_copia->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->copia_nome,
+					this->copia_freguesia, this->copia_sexo, this->copia_estado
+			});
+			this->data_copia->Location = System::Drawing::Point(570, 137);
+			this->data_copia->Name = L"data_copia";
+			this->data_copia->ReadOnly = true;
+			this->data_copia->Size = System::Drawing::Size(369, 423);
+			this->data_copia->TabIndex = 9;
+			// 
+			// copia_nome
+			// 
+			this->copia_nome->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->copia_nome->HeaderText = L"Nome";
+			this->copia_nome->Name = L"copia_nome";
+			this->copia_nome->ReadOnly = true;
+			this->copia_nome->Width = 60;
+			// 
+			// copia_freguesia
+			// 
+			this->copia_freguesia->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->copia_freguesia->HeaderText = L"Freguesia";
+			this->copia_freguesia->Name = L"copia_freguesia";
+			this->copia_freguesia->ReadOnly = true;
+			this->copia_freguesia->Width = 78;
+			// 
+			// copia_sexo
+			// 
+			this->copia_sexo->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->copia_sexo->HeaderText = L"Sexo";
+			this->copia_sexo->Name = L"copia_sexo";
+			this->copia_sexo->ReadOnly = true;
+			this->copia_sexo->Width = 56;
+			// 
+			// copia_estado
+			// 
+			this->copia_estado->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->copia_estado->HeaderText = L"Estado";
+			this->copia_estado->Name = L"copia_estado";
+			this->copia_estado->ReadOnly = true;
+			this->copia_estado->Width = 65;
+			// 
+			// bt_copia
+			// 
+			this->bt_copia->Location = System::Drawing::Point(776, 87);
+			this->bt_copia->Name = L"bt_copia";
+			this->bt_copia->Size = System::Drawing::Size(75, 23);
+			this->bt_copia->TabIndex = 10;
+			this->bt_copia->Text = L"Copiar";
+			this->bt_copia->UseVisualStyleBackColor = true;
+			this->bt_copia->Click += gcnew System::EventHandler(this, &Form1::Bt_copia_Click);
+			// 
+			// txt_copia
+			// 
+			this->txt_copia->Location = System::Drawing::Point(734, 27);
+			this->txt_copia->Name = L"txt_copia";
+			this->txt_copia->Size = System::Drawing::Size(147, 20);
+			this->txt_copia->TabIndex = 11;
+			// 
+			// rd_masc
+			// 
+			this->rd_masc->AutoSize = true;
+			this->rd_masc->Location = System::Drawing::Point(752, 58);
+			this->rd_masc->Name = L"rd_masc";
+			this->rd_masc->Size = System::Drawing::Size(34, 17);
+			this->rd_masc->TabIndex = 12;
+			this->rd_masc->TabStop = true;
+			this->rd_masc->Text = L"M";
+			this->rd_masc->UseVisualStyleBackColor = true;
+			// 
+			// rd_fem
+			// 
+			this->rd_fem->AutoSize = true;
+			this->rd_fem->Location = System::Drawing::Point(794, 58);
+			this->rd_fem->Name = L"rd_fem";
+			this->rd_fem->Size = System::Drawing::Size(31, 17);
+			this->rd_fem->TabIndex = 13;
+			this->rd_fem->TabStop = true;
+			this->rd_fem->Text = L"F";
+			this->rd_fem->UseVisualStyleBackColor = true;
+			// 
+			// rd_todos
+			// 
+			this->rd_todos->AutoSize = true;
+			this->rd_todos->Location = System::Drawing::Point(837, 58);
+			this->rd_todos->Name = L"rd_todos";
+			this->rd_todos->Size = System::Drawing::Size(32, 17);
+			this->rd_todos->TabIndex = 14;
+			this->rd_todos->TabStop = true;
+			this->rd_todos->Text = L"T";
+			this->rd_todos->UseVisualStyleBackColor = true;
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
+			this->BackColor = System::Drawing::SystemColors::ControlLightLight;
 			this->ClientSize = System::Drawing::Size(951, 572);
+			this->Controls->Add(this->rd_todos);
+			this->Controls->Add(this->rd_fem);
+			this->Controls->Add(this->rd_masc);
+			this->Controls->Add(this->txt_copia);
+			this->Controls->Add(this->bt_copia);
+			this->Controls->Add(this->data_copia);
 			this->Controls->Add(this->bt_freguesia);
 			this->Controls->Add(this->bt_velhos);
 			this->Controls->Add(this->txt_result);
@@ -410,11 +569,12 @@ namespace ProjCLR {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
-			this->Text = L"Madagascar";
+			this->Text = L"Jorge Sepúlveda";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_infos))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_copia))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -425,10 +585,12 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 		inicializa();
 
+		//Cria o ficheiro de delegado
+		StreamWriter^ fp = gcnew StreamWriter("DELEGADO.TXT");
+		fp->Close();
+
 		data_infos->ColumnCount = 18;
-
 		
-
 		data_infos->Columns[5]->Name = "d1";
 		data_infos->Columns[5]->HeaderText = "POR";
 		data_infos->Columns[6]->Name = "d2";
@@ -554,6 +716,7 @@ private: void mais_velhos()
 			resultado = resultado + Convert::ToString(data_infos->Rows[i]->Cells[0]->Value) + ", " + Convert::ToString(data_infos->Rows[i]->Cells[2]->Value) + "\r\n";
 		}
 	}
+	txt_result->Visible = true;
 	txt_result->Text = resultado;
 	}
 
@@ -608,6 +771,7 @@ private: System::Void Bt_localiza_Click(System::Object^ sender, System::EventArg
 	{
 		if (data_infos->Rows[i]->Cells[0]->Value->ToString()->ToUpper()==busca)
 		{
+			txt_result->Visible = true;
 			txt_result->Text = data_infos->Rows[i]->Cells[0]->Value->ToString();
 		
 		}
@@ -636,7 +800,7 @@ private: System::Void Bt_freguesia_Click(System::Object^ sender, System::EventAr
 			cont_freg++;
 		}
 	}
-
+	txt_result->Visible = true;
 	txt_result->Text = nomes + "\r\nTotal: " + Convert::ToString(cont_freg);
 
 	}
@@ -780,6 +944,7 @@ private: System::Void MelhorAlunoToolStripMenuItem_Click(System::Object^ sender,
 			}
 		}
 	}
+	txt_result->Visible = true;
 
 	txt_result->Text = resultado;
 
@@ -912,6 +1077,68 @@ private: System::Void GerarNotasToolStripMenuItem_Click(System::Object^ sender, 
 private: System::Void SairToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	Application::Exit();
+	}
+//Nome do autor
+private: System::Void AutorToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Jorge Sepúlveda");
+}
+//Informação sobre a versão
+private: System::Void VersãoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	MessageBox::Show("v0.0.2 \nVersão alfa, use por sua conta e risco.");
+}
+private: System::Void Bt_copia_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+	//data_infos->Columns[17]->Visible = true;
+	reprovados();
+
+	String^ copia_nome = " ";
+	String^ copia_freguesia = " ";
+	String^ copia_sexo = " ";
+	String^ copia_estado = " ";
+	
+	for (size_t linhas = 0; linhas < 20; linhas++)
+	{
+
+		if (Convert::ToString(data_infos->Rows[linhas]->Cells[1]->Value) == txt_copia->Text && rd_masc->Checked)
+		{
+			if (Convert::ToString(data_infos->Rows[linhas]->Cells[3]->Value)=="M")
+			{
+				copia_nome = Convert::ToString(data_infos->Rows[linhas]->Cells[0]->Value);
+				copia_freguesia = Convert::ToString(data_infos->Rows[linhas]->Cells[1]->Value);
+				copia_sexo = Convert::ToString(data_infos->Rows[linhas]->Cells[3]->Value);
+				copia_estado = Convert::ToString(data_infos->Rows[linhas]->Cells[17]->Value);
+
+				data_copia->Rows->Add(copia_nome, copia_freguesia, copia_sexo, copia_estado);
+			}
+		}
+
+		if (Convert::ToString(data_infos->Rows[linhas]->Cells[1]->Value) == txt_copia->Text && rd_fem->Checked)
+		{
+			if (Convert::ToString(data_infos->Rows[linhas]->Cells[3]->Value) == "F")
+			{
+				copia_nome = Convert::ToString(data_infos->Rows[linhas]->Cells[0]->Value);
+				copia_freguesia = Convert::ToString(data_infos->Rows[linhas]->Cells[1]->Value);
+				copia_sexo = Convert::ToString(data_infos->Rows[linhas]->Cells[3]->Value);
+				copia_estado = Convert::ToString(data_infos->Rows[linhas]->Cells[17]->Value);
+
+				data_copia->Rows->Add(copia_nome, copia_freguesia, copia_sexo, copia_estado);
+			}
+		}
+
+		if (Convert::ToString(data_infos->Rows[linhas]->Cells[1]->Value) == txt_copia->Text && rd_todos->Checked)
+		{
+			copia_nome = Convert::ToString(data_infos->Rows[linhas]->Cells[0]->Value);
+			copia_freguesia = Convert::ToString(data_infos->Rows[linhas]->Cells[1]->Value);
+			copia_sexo = Convert::ToString(data_infos->Rows[linhas]->Cells[3]->Value);
+			copia_estado = Convert::ToString(data_infos->Rows[linhas]->Cells[17]->Value);
+
+			data_copia->Rows->Add(copia_nome, copia_freguesia, copia_sexo, copia_estado);
+		}
+
+	}
+
+
 	}
 };
 }
