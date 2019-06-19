@@ -1087,10 +1087,13 @@ private: System::Void VersãoToolStripMenuItem_Click(System::Object^ sender, Syst
 
 	MessageBox::Show("v0.0.2 \nVersão alfa, use por sua conta e risco.");
 }
+
 private: System::Void Bt_copia_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 	//data_infos->Columns[17]->Visible = true;
 	reprovados();
+
+	data_copia->Rows->Clear();
 
 	String^ copia_nome = " ";
 	String^ copia_freguesia = " ";
